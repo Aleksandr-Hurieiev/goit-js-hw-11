@@ -4,6 +4,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 export const list = document.querySelector('#list-js');
 
 export default function renderUser(users) {
+  console.dir(users);
   const markup = users.hits
     .map(user => {
       return `<li class="list__item">

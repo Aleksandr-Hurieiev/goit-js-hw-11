@@ -18,11 +18,10 @@ export const param = {
 
 const form = document.querySelector('.form_js');
 const button = document.querySelector('.form__button');
-export const load = document.querySelector('#loader');
+const load = document.querySelector('#loader');
 form.addEventListener('submit', createData);
 
 //=========================================================================================================================================
-
 
 function createData(data) {
   data.preventDefault();
@@ -51,4 +50,3 @@ function createData(data) {
   form.reset();
 }
 //=========================================================================================================================================
-
