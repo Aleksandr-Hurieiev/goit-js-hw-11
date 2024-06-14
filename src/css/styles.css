@@ -7,7 +7,7 @@
 @import url('./reset.css');
 
 :root {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
@@ -31,52 +31,54 @@
 .form {
   display: flex;
   gap: 8px;
-  padding:36px 0;
+  padding: 36px 0;
   margin: 0 auto;
 }
 .form__input {
   display: flex;
-align-items: flex-start;
-justify-content: flex-start;
-flex-direction: row;
-width: 272px;
-height: 40px;
-padding: 8px 16px;
-border-radius: 4px;
-background: #fff;
-outline: 0px;
-border: 1px solid #808080;
-font-weight: 400;
-font-size: 16px;
-line-height: 1.5;
-letter-spacing: 0.04em;
-color: #808080;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+  width: 272px;
+  height: 40px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  background: #fff;
+  outline: 0px;
+  border: 1px solid #808080;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #808080;
 }
 .form__button {
   display: flex;
-align-items: center;
-justify-content: center;
-flex-direction: row;
-padding: 8px 16px;
-border-radius: 8px;
-background: #4e75ff;
-outline: 0px;
-border: 1px solid transparent;
-font-weight: 500;
-font-size: 16px;
-line-height: 1.5;
-letter-spacing: 0.04em;
-color: #fff;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: #4e75ff;
+  outline: 0px;
+  border: 1px solid transparent;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #fff;
 }
-.load{
-
+.form__button-active {
+  opacity: 0.5;
 }
-.load p{
+.load {
+}
+.load p {
   font-weight: 400;
-font-size: 16px;
-line-height: 1.5;
-letter-spacing: 0.04em;
-color: #2e2f42;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
 }
 /* ========================================================================================================================================= */
 .list {
@@ -86,14 +88,13 @@ color: #2e2f42;
   flex-wrap: wrap;
   gap: 24px;
 }
-.gallery{
-
+.gallery {
 }
 .list__item {
 }
 .list__img {
   width: 360px;
-height: 200px;
+  height: 200px;
 }
 .item__list {
   display: flex;
@@ -108,18 +109,18 @@ height: 200px;
 .item__list-title {
   font-family: inherit;
   font-weight: 600;
-font-size: 12px;
-line-height: 1.33333;
-letter-spacing: 0.04em;
-color: #2e2f42;
+  font-size: 12px;
+  line-height: 1.33333;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
 }
 .item__list-text {
   font-family: inherit;
   font-weight: 400;
-font-size: 12px;
-line-height: 2;
-letter-spacing: 0.04em;
-color: #2e2f42;
+  font-size: 12px;
+  line-height: 2;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
 }
 /* ========================================================================================================================================= */
 .loader {
@@ -128,7 +129,8 @@ color: #2e2f42;
   height: 100px;
 }
 
-.loader:before , .loader:after{
+.loader:before,
+.loader:after {
   content: '';
   border-radius: 50%;
   position: absolute;
@@ -136,11 +138,15 @@ color: #2e2f42;
   box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3) inset;
 }
 .loader:after {
-  box-shadow: 0 2px 0 #FF3D00 inset;
+  box-shadow: 0 2px 0 #ff3d00 inset;
   animation: rotate 2s linear infinite;
 }
 
 @keyframes rotate {
-  0% {  transform: rotate(0)}
-  100% { transform: rotate(360deg)}
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

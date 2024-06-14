@@ -10,7 +10,6 @@ export default function renderUser(users) {
       return `<li class="list__item">
                 <div class="gallery">
           <a href="${user.webformatURL}"><img class="list__img" src="${user.webformatURL}" alt="${user.id}"</a>
-
       </div>
     <ul class="item__list">
       <li class="item__list-item">
@@ -34,7 +33,6 @@ export default function renderUser(users) {
     })
     .join('');
   list.insertAdjacentHTML('beforeend', markup);
-
   let gallery = new SimpleLightbox('.gallery a', {
     captionsData: 'alt',
     captionDelay: 250,

@@ -12,41 +12,44 @@ export const param = {
   image_type: 'photo',
   orientation: 'horizontal',
   safesearch: true,
-  per_page: 9,
+  per_page: 30,
 };
 //=========================================================================================================================================
 
 const form = document.querySelector('.form_js');
-const button = document.querySelector('.form__button');
-const load = document.querySelector('#loader');
 form.addEventListener('submit', createData);
 
 //=========================================================================================================================================
 
 function createData(data) {
   data.preventDefault();
+  document.querySelector('#loader').classList.add('loader');
+  document.querySelector('.form__button').classList.add('form__button-active');
+  document.querySelector('.form__input').disabled = true;
+  document.querySelector('.form__button').disabled = true;
+  list.innerHTML = '';
   const search = data.target[0].value;
   param.q = search;
-  makeRequest(param)
-    .then(users => {
-      if (users.hits.length === 0) {
-        list.innerHTML = '';
+  setTimeout(() => {
+    makeRequest(param)
+      .then(users => {
+        if (users.hits.length === 0) {
+          iziToast.error({
+            position: 'topRight',
+            title: 'Error',
+            message:
+              'Sorry, there are no images matching your search query. Please try again!',
+          });
+        } else renderUser(users);
+      })
+      .catch(error => {
         iziToast.error({
-          title: 'Error',
-          message:
-            'Sorry, there are no images matching your search query. Please try again!',
+          title: `${error}`,
+          message: 'Page not found',
+          position: 'topRight',
         });
-      } else if (list.childElementCount > 0) {
-        list.innerHTML = '';
-        renderUser(users);
-      } else renderUser(users);
-    })
-    .catch(error => {
-      iziToast.error({
-        title: `${error}`,
-        message: 'Page not found',
       });
-    });
+  }, 1000);
   form.reset();
 }
 //=========================================================================================================================================
