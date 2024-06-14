@@ -9,7 +9,7 @@ export default function renderUser(users) {
     .map(user => {
       return `<li class="list__item">
                 <div class="gallery">
-          <a href="${user.webformatURL}"><img class="list__img" src="${user.webformatURL}" alt="${user.id}"</a>
+          <a href="${user.webformatURL}"><img class="list__img" src="${user.webformatURL}" alt="${user.user}"</a>
       </div>
     <ul class="item__list">
       <li class="item__list-item">
