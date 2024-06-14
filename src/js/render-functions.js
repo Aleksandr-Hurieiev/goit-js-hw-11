@@ -36,6 +36,5 @@ export default function renderUser(users) {
   let gallery = new SimpleLightbox('.gallery a', {
     captionsData: 'alt',
     captionDelay: 250,
-  });
-  gallery.refresh();
+  }).refresh();
 }
