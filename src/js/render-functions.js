@@ -2,7 +2,10 @@ import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 export const list = document.querySelector('#list-js');
-
+let gallery = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
 export default function renderUser(users) {
   console.dir(users);
   const markup = users.hits
@@ -33,8 +36,5 @@ export default function renderUser(users) {
     })
     .join('');
   list.insertAdjacentHTML('beforeend', markup);
-  let gallery = new SimpleLightbox('.gallery a', {
-    captionsData: 'alt',
-    captionDelay: 250,
-  }).refresh();
+  gallery.refresh();
 }

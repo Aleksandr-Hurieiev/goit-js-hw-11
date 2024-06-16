@@ -7,12 +7,6 @@ export default function makeRequest(data) {
     if (!response.ok) {
       throw new Error(response.status);
     }
-    document
-      .querySelector('.form__button')
-      .classList.remove('form__button-active');
-    document.querySelector('.form__button').disabled = false;
-    document.querySelector('.form__input').disabled = false;
-    document.querySelector('#loader').classList.remove('loader');
     return response.json();
   });
 }

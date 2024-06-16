@@ -1,10 +1,9 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import makeRequest from './js/pixabay.js';
-import renderUser from './js/render-functions.js';
-import { list } from './js/render-functions.js';
+import renderUser, { list } from './js/render-functions.js';
 
-//=========================================================================================================================================
+//=========================================================================
 
 export const param = {
   key: '44329356-b9318945d135833e2eb07a97b',
@@ -14,33 +13,46 @@ export const param = {
   safesearch: true,
   per_page: 30,
 };
-//=========================================================================================================================================
+//=========================================================================
 
 const form = document.querySelector('.form_js');
+const loader = document.querySelector('#loader');
+const formButton = document.querySelector('.form__button');
+const formInput = document.querySelector('.form__input');
+
 form.addEventListener('submit', createData);
 
-//=========================================================================================================================================
+//=========================================================================
 
-function createData(data) {
-  data.preventDefault();
-  document.querySelector('#loader').classList.add('loader');
-  document.querySelector('.form__button').classList.add('form__button-active');
-  document.querySelector('.form__input').disabled = true;
-  document.querySelector('.form__button').disabled = true;
+function createData(event) {
+  event.preventDefault();
   list.innerHTML = '';
-  const search = data.target[0].value;
+  const search = event.target[0].value.trim();
+  
+  if (!search) {
+    event.target[0].value = ''
+    return iziToast.warning({
+      title: 'Warning',
+      message: 'Enter more than one character',
+      position: 'topRight',
+    });
+  }
+
   param.q = search;
+  toggleLoading(true);
+
   setTimeout(() => {
     makeRequest(param)
       .then(users => {
-        if (users.hits.length === 0) {
+        if (!users.hits.length) {
           iziToast.error({
             position: 'topRight',
             title: 'Error',
-            message:
-              'Sorry, there are no images matching your search query. Please try again!',
+            message: 'Sorry, there are no images matching your search query. Please try again!',
           });
-        } else renderUser(users);
+        } else {
+          renderUser(users);
+        }
       })
       .catch(error => {
         iziToast.error({
@@ -48,8 +60,19 @@ function createData(data) {
           message: 'Page not found',
           position: 'topRight',
         });
+      })
+      .finally(() => {
+        toggleLoading(false);
       });
   }, 1000);
+
   form.reset();
+}
+
+function toggleLoading(isLoading) {
+  loader.classList.toggle('loader', isLoading);
+  formButton.classList.toggle('form__button-active', isLoading);
+  formInput.disabled = isLoading;
+  formButton.disabled = isLoading;
 }
 //=========================================================================================================================================
